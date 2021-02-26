@@ -1,0 +1,43 @@
+version: "3"
+services:
+  proxy:
+    image: traefik:2.3
+    networks:
+      - traefik
+    ports:
+      - "80:80"
+      - "8080:8080"
+      - "443:443"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "./traefik.toml:/traefik.toml"
+    restart: unless-stopped
+    labels:
+      - "traefik.frontend.rule=Host:api.neo4j.lan"
+      - "traefik.port=8080"
+      - "traefik.backend=traefik"
+      - "traefik.frontend.entryPoints=http"
+
+  neo4j-quickstrat:
+    image: neo4j-quickstart:latest
+    build:
+      dockerfile: ./src/main/docker/Dockerfile.jvm
+      context: ../neo4j-quickstart
+    env_file:
+      - ./config/neo4j.env
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.neo4j-router.rule=Host(`api.hospitalink.lan`) && PathPrefix(`/`)"
+      - "traefik.http.middlewares.neo4j-middleware.headers.accesscontrolallowmethods=GET,OPTIONS,PUT,PATCH,DELETE,POST"
+      - "traefik.http.middlewares.neo4j-middleware.headers.accesscontrolalloworigin=*"
+      - "traefik.http.middlewares.neo4j-middleware.headers.accesscontrolmaxage=100"
+      - "traefik.http.middlewares.neo4j-middleware.headers.addvaryheader=true"
+      - "traefik.http.middlewares.neo4j-middleware.headers.accesscontrolallowheaders=Content-Type,Accept,Authorization"
+      - "traefik.http.routers.neo4j-router.middlewares=neo4j-middleware@docker"
+    networks:
+      - traefik
+networks:
+  traefik:
+    external:
+      name: traefik
+
