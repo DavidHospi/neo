@@ -3,6 +3,7 @@ package org.acme.datasource.ressources;
 import org.acme.datasource.entity.Commune;
 import org.acme.datasource.service.CommuneService;
 import org.acme.datasource.service.GareService;
+import org.jboss.resteasy.annotations.jaxrs.PathParam;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -10,6 +11,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.List;
 
 @Path("commune")
@@ -22,8 +24,14 @@ public class CommuneRessource {
 
     @GET
     @Path("most")
-    public List<Commune> communes() {
-        return this.communeService.getCommuneAvecLePlusDeGare();
+    public Response communes() {
+        return Response.ok(this.communeService.getCommuneAvecLePlusDeGare()).build();
+    }
+
+    @GET
+    @Path("most/{ville}")
+    public Response communesVille(@PathParam String ville) {
+        return Response.ok(communeService.getCommuneAvecLePlusDeGareByVille(ville)).build();
     }
 
 }
