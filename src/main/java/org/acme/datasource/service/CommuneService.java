@@ -1,6 +1,7 @@
 package org.acme.datasource.service;
 
 import org.acme.datasource.entity.Commune;
+import org.acme.datasource.utils.ResultUtils;
 import org.neo4j.ogm.cypher.query.SortOrder;
 import org.neo4j.ogm.model.Result;
 import org.neo4j.ogm.session.Session;
@@ -19,12 +20,13 @@ public class CommuneService {
     @Inject
     SessionFactory sessionFactory;
 
-    public List<Commune> getCommuneAvecLePlusDeGare() {
+    public List<Map<String, Object>>  getCommuneAvecLePlusDeGare() {
         Session session = sessionFactory.openSession();
-        Iterable<Commune> result = session.query(Commune.class, "MATCH (gare: Gare)-[:SE_SITUE_A]->(commune: Commune)\n"
+        Result result = session.query("MATCH (gare: Gare)-[:SE_SITUE_A]->(commune: Commune)\n"
                 + "RETURN commune, count(gare) as nbGares\n"
                 +"ORDER BY count(gare) DESC;", Map.of());
-        return resultList(result);
+
+        return ResultUtils.feedListFromResul(result);
     }
 
     private List<Commune> resultList(Iterable<Commune> result) {
@@ -40,16 +42,6 @@ public class CommuneService {
                 + "RETURN commune, count(gare) as nbGares\n"
                 +"ORDER BY count(gare) DESC;", Map.of("ville", ville));
 
-        List<Map<String, Object>> list = new ArrayList<>();
-
-        result.queryResults().forEach(queryRes ->{
-            queryRes.entrySet().forEach(entry -> {
-                Map<String, Object> map = new HashMap<>();
-                map.put(entry.getKey(), entry.getValue());
-                list.add(map);
-            });
-        });
-
-        return list;
+        return ResultUtils.feedListFromResul(result);
     }
 }

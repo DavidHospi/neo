@@ -12,10 +12,6 @@ import java.util.Set;
 
 @NodeEntity
 public class Gare {
-
-    @Id
-    public Integer id;
-
     @Relationship("A_POUR_RG")
     public Set<RevisionGenerale> revisionGenerales = new HashSet<>();
 
@@ -34,10 +30,10 @@ public class Gare {
     @Relationship("A_POUR_REGION_SNCF")
     public Set<RegionSNCF> regionSNCFS = new HashSet<>();
 
+    @Id
+    public String codeUIC;
     @Property
     public String codePlateforme;
-    @Property
-    public String codeUIC;
     @Property
     public String intitulePlateforme;
     @Property
