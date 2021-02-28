@@ -7,8 +7,10 @@ start-database:
         -v $HOME/neo/neo4j-quickstart/logs:/logs \
         -v $HOME/neo/neo4j-quickstart/import:/var/lib/neo4j/import \
         -v $HOME/neo/neo4j-quickstart/plugins:/plugins \
+        -v $HOME/neo/neo4j-quickstart/config/neo4j.conf:/conf/neo4j.conf \
         --env NEO4J_AUTH=neo4j/david \
         neo4j:latest
+
 
 stop-database:
 	docker stop tpneo4j
