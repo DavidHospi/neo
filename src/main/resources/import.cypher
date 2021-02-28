@@ -80,3 +80,28 @@ MERGE(rsncf: RegionSNCF {
 nom: coalesce(gare.`Région SNCF`, "ND")
 })
 MERGE (g)-[:A_POUR_REGION_SNCF]->(rsncf);
+
+
+DROP CONSTRAINT contrainte_gare_uic;
+CREATE INDEX index_code_uic IF NOT EXISTS FOR (gare: Gare) ON (gare.codeUIC);
+CREATE INDEX index_perdu_date IF NOT EXISTS FOR (objet: Objet) ON (objet.perduLe);
+CREATE INDEX index_restitue_objet IF NOT EXISTS FOR (objet: Objet) ON (objet.restitue);
+
+:auto USING PERIODIC COMMIT 500
+LOAD CSV WITH HEADERS FROM 'file:///objets-trouves-restitution.csv' AS objet FIELDTERMINATOR ';'
+
+MERGE (o: Objet {
+natureObjet: objet.`Nature d'objets`,
+perduLe : substring(objet.Date,0,10),
+restitue: (coalesce(substring(objet.`Date et heure de restitution`,0,10), 'false'))
+})
+
+MERGE(gare: Gare{
+codeUIC: (coalesce(objet.`Code UIC`, '0000000000'))
+})
+MERGE (o)-[:TROUVE_A_GARE]->(gare)
+
+MERGE(type: TypeObjet {
+nom: objet.`Type d'objets`
+})
+MERGE (o)-[:EST_DE_TYPE]->(type)
