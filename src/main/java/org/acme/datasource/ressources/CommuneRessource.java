@@ -34,4 +34,11 @@ public class CommuneRessource {
         return Response.ok(communeService.getCommuneAvecLePlusDeGareByVille(ville)).build();
     }
 
+    @GET
+    @Path("most/objet")
+    public Response communeOrderByNbObjet() {
+        return Response.ok(communeService.getCommuneOrderByObjetTrouve()).build();
+    }
+
+
 }

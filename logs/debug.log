@@ -3903,3 +3903,9 @@ RETURN r AS r
 2021-02-27 18:24:24.336+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j/e74f1fd3] Checkpoint triggered by "Scheduled checkpoint for every 15 minutes threshold" @ txId: 6181 checkpoint completed in 199ms
 2021-02-27 18:24:24.337+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] [neo4j/e74f1fd3] Pruned log version 1. The strategy used was '104857600 size'. 
 2021-02-27 18:41:33.447+0000 WARN  [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=132, gcTime=165, gcCount=1}
+2021-02-28 00:18:56.687+0000 INFO  [o.n.c.i.ExecutionEngine] [neo4j/e74f1fd3] Discarded stale query from the query cache after 22030 seconds. Reason: NodesAllCardinality changed from 6127.0 to 293915.0, which is a divergence of 0.9791538369936886 which is greater than threshold 0.11224000765174752. Query: MATCH (n:Gare)
+RETURN n AS n
+  LIMIT 25
+2021-02-28 00:20:44.939+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j/e74f1fd3] Checkpoint triggered by "Scheduled checkpoint for every 15 minutes threshold" @ txId: 6188 checkpoint started...
+2021-02-28 00:20:44.984+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j/e74f1fd3] Checkpoint triggered by "Scheduled checkpoint for every 15 minutes threshold" @ txId: 6188 checkpoint completed in 45ms
+2021-02-28 00:20:44.985+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] [neo4j/e74f1fd3] No log version pruned. The strategy used was '104857600 size'. 

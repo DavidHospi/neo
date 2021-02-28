@@ -1,34 +1,33 @@
 package org.acme.datasource.entity;
 
-import org.neo4j.ogm.annotation.Id;
-import org.neo4j.ogm.annotation.NodeEntity;
-import org.neo4j.ogm.annotation.Property;
-import org.neo4j.ogm.annotation.Relationship;
-
+import org.acme.datasource.entity.relationship.*;
+import org.neo4j.driver.types.Point;
+import org.neo4j.ogm.annotation.*;
+import org.neo4j.ogm.types.spatial.CartesianPoint2d;
 
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 @NodeEntity
 public class Gare {
+
     @Relationship("A_POUR_RG")
-    public Set<RevisionGenerale> revisionGenerales = new HashSet<>();
+    public Set<RSGareRG> revisionGenerales = new HashSet<>();
 
     @Relationship("A_POUR_DG")
-    public Set<DirectionGenerale> directionGenerales = new HashSet<>();
+    public Set<RSGareDG> directionGenerales = new HashSet<>();
 
     @Relationship("A_POUR_DRG")
-    public Set<SegmentDRG> segmentDRGS = new HashSet<>();
+    public Set<RSGareDRG> segmentDRGS = new HashSet<>();
 
     @Relationship("A_POUR_DPT")
-    public Set<Departements> departements = new HashSet<>();
+    public Set<RSGareDepartements> departements = new HashSet<>();
 
     @Relationship("SE_SITUE_A")
-    public Set<Commune> communes = new HashSet<>();
+    public Set<RSGareCommune> communes = new HashSet<>();
 
     @Relationship("A_POUR_REGION_SNCF")
-    public Set<RegionSNCF> regionSNCFS = new HashSet<>();
+    public Set<RSGareRegionSNCF> regionSNCFS = new HashSet<>();
 
     @Id
     public String codeUIC;
@@ -40,8 +39,9 @@ public class Gare {
     public Float longitude;
     @Property
     public Float latitude;
-    @Property
-    public Map<String, Float> geoPoint;
+    @Property(name="geoPoint")
+    @Transient
+    public Point geoPoint;
     @Property
     public String wgs84;
     @Property
@@ -55,9 +55,10 @@ public class Gare {
     @Property
     public String ut;
     @Property
-    public String nbPlateformes;
+    public String nbPlatformes;
     @Property
     public String uniteGare;
+
 
 
 }

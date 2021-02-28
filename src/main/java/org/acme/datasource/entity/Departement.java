@@ -5,12 +5,10 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 
 @NodeEntity
-public class Departements {
+public class Departement {
 
     @Id
-    public Integer id;
-    @Property
-    public Integer code;
+    public String code;
     @Property
     public String nom;
 

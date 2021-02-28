@@ -26,7 +26,7 @@ public class CommuneService {
                 + "RETURN commune, count(gare) as nbGares\n"
                 +"ORDER BY count(gare) DESC;", Map.of());
 
-        return ResultUtils.feedListFromResul(result);
+        return ResultUtils.feedListFromResult(result);
     }
 
     private List<Commune> resultList(Iterable<Commune> result) {
@@ -42,6 +42,14 @@ public class CommuneService {
                 + "RETURN commune, count(gare) as nbGares\n"
                 +"ORDER BY count(gare) DESC;", Map.of("ville", ville));
 
-        return ResultUtils.feedListFromResul(result);
+        return ResultUtils.feedListFromResult(result);
+    }
+
+    public List<Map<String, Object>> getCommuneOrderByObjetTrouve() {
+        Session session = sessionFactory.openSession();
+        Result result = session.query("MATCH(o:Objet)-[tag:TROUVE_A_GARE]->(g:Gare)-[:SE_SITUE_A]->(c:Commune)\n" +
+                "RETURN c, count(o) as nbObjet\n" +
+                "ORDER BY nbObjet DESC", Map.of());
+        return ResultUtils.feedListFromResult(result);
     }
 }

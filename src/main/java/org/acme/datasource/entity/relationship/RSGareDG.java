@@ -1,6 +1,6 @@
 package org.acme.datasource.entity.relationship;
 
-import org.acme.datasource.entity.DirectionGenerale;
+import org.acme.datasource.entity.DirectionGeneral;
 import org.acme.datasource.entity.Gare;
 import org.neo4j.ogm.annotation.EndNode;
 import org.neo4j.ogm.annotation.RelationshipEntity;
@@ -11,9 +11,9 @@ public class RSGareDG {
     @StartNode
     private Gare gare;
     @EndNode
-    public DirectionGenerale directionGenerale;
+    public DirectionGeneral directionGeneral;
     private RSGareDG() {}
-    public RSGareDG(DirectionGenerale directionGenerale) {
-        this.directionGenerale = directionGenerale;
+    public RSGareDG(DirectionGeneral directionGeneral) {
+        this.directionGeneral = directionGeneral;
     }
 }

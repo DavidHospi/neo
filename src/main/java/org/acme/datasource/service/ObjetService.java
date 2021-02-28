@@ -24,6 +24,6 @@ public class ObjetService {
                 "RETURN count(tag) as nbObjet, n.nom as Type\n" +
                 "ORDER BY nbObjet DESC\n", Map.of());
 
-        return ResultUtils.feedListFromResul(result);
+        return ResultUtils.feedListFromResult(result);
     }
 }

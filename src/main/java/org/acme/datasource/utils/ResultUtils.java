@@ -10,7 +10,7 @@ import java.util.Map;
 public class ResultUtils {
 
 
-    public static List<Map<String, Object>> feedListFromResul(Result result) {
+    public static List<Map<String, Object>> feedListFromResult(Result result) {
         List<Map<String, Object>> list = new ArrayList<>();
 
         result.queryResults().forEach(queryRes ->{

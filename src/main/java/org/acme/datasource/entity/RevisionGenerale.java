@@ -8,7 +8,5 @@ import org.neo4j.ogm.annotation.Property;
 public class RevisionGenerale {
 
     @Id
-    public Integer id;
-    @Property
     public String nom;
 }

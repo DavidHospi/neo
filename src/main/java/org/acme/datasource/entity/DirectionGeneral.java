@@ -5,11 +5,9 @@ import org.neo4j.ogm.annotation.NodeEntity;
 import org.neo4j.ogm.annotation.Property;
 
 @NodeEntity
-public class DirectionGenerale {
+public class DirectionGeneral {
 
     @Id
-    public Integer id;
-    @Property
     public String nom;
 
 

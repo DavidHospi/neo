@@ -7,8 +7,7 @@ import org.neo4j.ogm.annotation.Property;
 @NodeEntity
 public class RegionSNCF {
 
+
     @Id
-    public Integer id;
-    @Property
-    public String code;
+    public String nom;
 }

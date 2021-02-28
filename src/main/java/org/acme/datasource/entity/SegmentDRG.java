@@ -6,8 +6,6 @@ import org.neo4j.ogm.annotation.Property;
 public class SegmentDRG {
 
     @Id
-    public Integer id;
-    @Property
     public String code;
 
 }
