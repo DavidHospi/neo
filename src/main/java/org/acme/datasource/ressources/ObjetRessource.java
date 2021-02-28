@@ -23,6 +23,18 @@ public class ObjetRessource {
     @GET
     @Path("most/type")
     public Response getObjetPerduLePlusParType() {
-        return Response.ok(this.objetService).build();
+        return Response.ok(this.objetService.getObjetPerduLePlusParType()).build();
+    }
+
+    @GET
+    @Path("count/restitue")
+    public Response getNbObjetRestitue() {
+        return Response.ok(this.objetService.getNbObjetRestitue()).build();
+    }
+
+    @GET
+    @Path("count/non-restitue")
+    public Response getNbObjetNonRestitue() {
+        return Response.ok(this.objetService.getNbObjetNonRestitue()).build();
     }
 }

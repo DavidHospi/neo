@@ -3909,3 +3909,235 @@ RETURN n AS n
 2021-02-28 00:20:44.939+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j/e74f1fd3] Checkpoint triggered by "Scheduled checkpoint for every 15 minutes threshold" @ txId: 6188 checkpoint started...
 2021-02-28 00:20:44.984+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j/e74f1fd3] Checkpoint triggered by "Scheduled checkpoint for every 15 minutes threshold" @ txId: 6188 checkpoint completed in 45ms
 2021-02-28 00:20:44.985+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] [neo4j/e74f1fd3] No log version pruned. The strategy used was '104857600 size'. 
+2021-02-28 00:43:23.573+0000 WARN  [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=460, gcTime=441, gcCount=1}
+2021-02-28 00:43:24.179+0000 WARN  [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=205, gcTime=235, gcCount=1}
+2021-02-28 00:43:31.303+0000 WARN  [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=124, gcTime=178, gcCount=1}
+2021-02-28 00:43:32.381+0000 INFO  [o.n.k.d.Database] [neo4j/e74f1fd3] Rotated to transaction log [/data/transactions/neo4j/neostore.transaction.db.4] version=3, last transaction in previous log=6189, rotation took 26 millis, started after 23516496 millis.
+2021-02-28 00:43:32.751+0000 WARN  [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=245, gcTime=252, gcCount=1}
+2021-02-28 00:43:45.020+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j/e74f1fd3] Checkpoint triggered by "Scheduled checkpoint for every 15 minutes threshold" @ txId: 6189 checkpoint started...
+2021-02-28 00:43:45.207+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j/e74f1fd3] Checkpoint triggered by "Scheduled checkpoint for every 15 minutes threshold" @ txId: 6189 checkpoint completed in 186ms
+2021-02-28 00:43:45.208+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] [neo4j/e74f1fd3] No log version pruned. The strategy used was '104857600 size'. 
+2021-02-28 00:43:57.412+0000 INFO  [o.n.c.i.ExecutionEngine] [neo4j/e74f1fd3] Discarded stale query from the query cache after 23409 seconds. Reason: CardinalityByLabelsAndRelationshipType(None,None,None) changed from 910523.0 to 1.0, which is a divergence of 0.9999989017301045 which is greater than threshold 0.10656603831821988. Query: CALL db.labels()
+  YIELD label
+RETURN {name: "labels", data: COLLECT(label)[..1000]} AS result
+UNION ALL
+CALL db.relationshipTypes()
+  YIELD relationshipType
+RETURN {name: "relationshipTypes", data: COLLECT(relationshipType)[..1000]} AS result
+UNION ALL
+CALL db.propertyKeys()
+  YIELD propertyKey
+RETURN {name: "propertyKeys", data: COLLECT(propertyKey)[..1000]} AS result
+UNION ALL
+CALL dbms.functions()
+  YIELD name, signature, description
+RETURN {name: "functions", data: collect({name: name, signature: signature, description: description})} AS result
+UNION ALL
+CALL dbms.procedures()
+  YIELD name, signature, description
+RETURN {name: "procedures", data: collect({name: name, signature: signature, description: description})} AS result
+UNION ALL
+MATCH ()
+RETURN {name: "nodes", data: count(*)} AS result
+UNION ALL
+MATCH ()-->()
+RETURN {name: "relationships", data: count(*)} AS result
+2021-02-28 00:44:49.789+0000 INFO  [o.n.c.i.ExecutionEngine] [neo4j/e74f1fd3] Discarded stale query from the query cache after 52 seconds. Reason: CardinalityByLabelsAndRelationshipType(None,None,None) changed from 1.0 to 17202.0, which is a divergence of 0.9999418672247413 which is greater than threshold 0.7418939617253401. Query: CALL db.labels()
+  YIELD label
+RETURN {name: "labels", data: COLLECT(label)[..1000]} AS result
+UNION ALL
+CALL db.relationshipTypes()
+  YIELD relationshipType
+RETURN {name: "relationshipTypes", data: COLLECT(relationshipType)[..1000]} AS result
+UNION ALL
+CALL db.propertyKeys()
+  YIELD propertyKey
+RETURN {name: "propertyKeys", data: COLLECT(propertyKey)[..1000]} AS result
+UNION ALL
+CALL dbms.functions()
+  YIELD name, signature, description
+RETURN {name: "functions", data: collect({name: name, signature: signature, description: description})} AS result
+UNION ALL
+CALL dbms.procedures()
+  YIELD name, signature, description
+RETURN {name: "procedures", data: collect({name: name, signature: signature, description: description})} AS result
+UNION ALL
+MATCH ()
+RETURN {name: "nodes", data: count(*)} AS result
+UNION ALL
+MATCH ()-->()
+RETURN {name: "relationships", data: count(*)} AS result
+2021-02-28 00:45:17.411+0000 INFO  [o.n.c.i.ExecutionEngine] [neo4j/e74f1fd3] Discarded stale query from the query cache after 27 seconds. Reason: NodesAllCardinality changed from 6127.0 to 164644.0, which is a divergence of 0.9627863754524915 which is greater than threshold 0.7466115867479081. Query: CALL db.labels()
+  YIELD label
+RETURN {name: "labels", data: COLLECT(label)[..1000]} AS result
+UNION ALL
+CALL db.relationshipTypes()
+  YIELD relationshipType
+RETURN {name: "relationshipTypes", data: COLLECT(relationshipType)[..1000]} AS result
+UNION ALL
+CALL db.propertyKeys()
+  YIELD propertyKey
+RETURN {name: "propertyKeys", data: COLLECT(propertyKey)[..1000]} AS result
+UNION ALL
+CALL dbms.functions()
+  YIELD name, signature, description
+RETURN {name: "functions", data: collect({name: name, signature: signature, description: description})} AS result
+UNION ALL
+CALL dbms.procedures()
+  YIELD name, signature, description
+RETURN {name: "procedures", data: collect({name: name, signature: signature, description: description})} AS result
+UNION ALL
+MATCH ()
+RETURN {name: "nodes", data: count(*)} AS result
+UNION ALL
+MATCH ()-->()
+RETURN {name: "relationships", data: count(*)} AS result
+2021-02-28 00:45:51.380+0000 INFO  [o.n.k.d.Database] [neo4j/e74f1fd3] Rotated to transaction log [/data/transactions/neo4j/neostore.transaction.db.5] version=4, last transaction in previous log=7318, rotation took 37 millis, started after 138962 millis.
+2021-02-28 00:46:12.577+0000 INFO  [o.n.c.i.ExecutionEngine] [neo4j/e74f1fd3] Discarded stale query from the query cache after 24226 seconds. Reason: NodesAllCardinality changed from 266926.0 to 723772.0, which is a divergence of 0.6312015386060804 which is greater than threshold 0.10346612448026002. Query: MATCH (n:Objet)
+RETURN n AS n
+  LIMIT 25
+2021-02-28 00:46:13.060+0000 INFO  [o.n.c.i.ExecutionEngine] [neo4j/e74f1fd3] Discarded stale query from the query cache after 23440 seconds. Reason: NodesAllCardinality changed from 293915.0 to 723772.0, which is a divergence of 0.5939121712362456 which is greater than threshold 0.10644425851811269. Query: MATCH (a)-[r]->(b)
+  WHERE id(a) IN $existingNodeIds AND id(b) IN $newNodeIds
+RETURN r AS r
+2021-02-28 00:46:37.530+0000 INFO  [o.n.c.i.ExecutionEngine] [neo4j/e74f1fd3] Discarded stale query from the query cache after 80 seconds. Reason: NodesAllCardinality changed from 165144.0 to 723772.0, which is a divergence of 0.7718286974351038 which is greater than threshold 0.7366796820234307. Query: CALL db.labels()
+  YIELD label
+RETURN {name: "labels", data: COLLECT(label)[..1000]} AS result
+UNION ALL
+CALL db.relationshipTypes()
+  YIELD relationshipType
+RETURN {name: "relationshipTypes", data: COLLECT(relationshipType)[..1000]} AS result
+UNION ALL
+CALL db.propertyKeys()
+  YIELD propertyKey
+RETURN {name: "propertyKeys", data: COLLECT(propertyKey)[..1000]} AS result
+UNION ALL
+CALL dbms.functions()
+  YIELD name, signature, description
+RETURN {name: "functions", data: collect({name: name, signature: signature, description: description})} AS result
+UNION ALL
+CALL dbms.procedures()
+  YIELD name, signature, description
+RETURN {name: "procedures", data: collect({name: name, signature: signature, description: description})} AS result
+UNION ALL
+MATCH ()
+RETURN {name: "nodes", data: count(*)} AS result
+UNION ALL
+MATCH ()-->()
+RETURN {name: "relationships", data: count(*)} AS result
+2021-02-28 00:49:31.674+0000 WARN  [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=123, gcTime=127, gcCount=1}
+2021-02-28 00:49:33.432+0000 WARN  [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=172, gcTime=173, gcCount=1}
+2021-02-28 00:49:34.417+0000 WARN  [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=111, gcTime=133, gcCount=1}
+2021-02-28 00:49:36.461+0000 WARN  [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=144, gcTime=153, gcCount=1}
+2021-02-28 00:49:38.672+0000 WARN  [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=102, gcTime=189, gcCount=1}
+2021-02-28 00:49:42.188+0000 WARN  [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=111, gcTime=123, gcCount=1}
+2021-02-28 00:49:49.806+0000 WARN  [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=101, gcTime=111, gcCount=1}
+2021-02-28 00:49:50.532+0000 WARN  [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=125, gcTime=131, gcCount=1}
+2021-02-28 00:49:52.690+0000 INFO  [o.n.k.d.Database] [neo4j/e74f1fd3] Rotated to transaction log [/data/transactions/neo4j/neostore.transaction.db.6] version=5, last transaction in previous log=7640, rotation took 37 millis, started after 241273 millis.
+2021-02-28 00:49:53.893+0000 WARN  [o.n.k.i.c.VmPauseMonitorComponent] Detected VM stop-the-world pause: {pauseTime=111, gcTime=126, gcCount=1}
+2021-02-28 00:49:57.678+0000 INFO  [o.n.c.i.ExecutionEngine] [neo4j/e74f1fd3] Discarded stale query from the query cache after 41 seconds. Reason: CardinalityByLabelsAndRelationshipType(None,None,None) changed from 1452458.0 to 1.0, which is a divergence of 0.9999993115119336 which is greater than threshold 0.7439109017410941. Query: CALL db.labels()
+  YIELD label
+RETURN {name: "labels", data: COLLECT(label)[..1000]} AS result
+UNION ALL
+CALL db.relationshipTypes()
+  YIELD relationshipType
+RETURN {name: "relationshipTypes", data: COLLECT(relationshipType)[..1000]} AS result
+UNION ALL
+CALL db.propertyKeys()
+  YIELD propertyKey
+RETURN {name: "propertyKeys", data: COLLECT(propertyKey)[..1000]} AS result
+UNION ALL
+CALL dbms.functions()
+  YIELD name, signature, description
+RETURN {name: "functions", data: collect({name: name, signature: signature, description: description})} AS result
+UNION ALL
+CALL dbms.procedures()
+  YIELD name, signature, description
+RETURN {name: "procedures", data: collect({name: name, signature: signature, description: description})} AS result
+UNION ALL
+MATCH ()
+RETURN {name: "nodes", data: count(*)} AS result
+UNION ALL
+MATCH ()-->()
+RETURN {name: "relationships", data: count(*)} AS result
+2021-02-28 00:50:32.372+0000 INFO  [o.n.c.i.ExecutionEngine] [neo4j/e74f1fd3] Discarded stale query from the query cache after 34 seconds. Reason: CardinalityByLabelsAndRelationshipType(None,None,None) changed from 1.0 to 17202.0, which is a divergence of 0.9999418672247413 which is greater than threshold 0.7452604218215408. Query: CALL db.labels()
+  YIELD label
+RETURN {name: "labels", data: COLLECT(label)[..1000]} AS result
+UNION ALL
+CALL db.relationshipTypes()
+  YIELD relationshipType
+RETURN {name: "relationshipTypes", data: COLLECT(relationshipType)[..1000]} AS result
+UNION ALL
+CALL db.propertyKeys()
+  YIELD propertyKey
+RETURN {name: "propertyKeys", data: COLLECT(propertyKey)[..1000]} AS result
+UNION ALL
+CALL dbms.functions()
+  YIELD name, signature, description
+RETURN {name: "functions", data: collect({name: name, signature: signature, description: description})} AS result
+UNION ALL
+CALL dbms.procedures()
+  YIELD name, signature, description
+RETURN {name: "procedures", data: collect({name: name, signature: signature, description: description})} AS result
+UNION ALL
+MATCH ()
+RETURN {name: "nodes", data: count(*)} AS result
+UNION ALL
+MATCH ()-->()
+RETURN {name: "relationships", data: count(*)} AS result
+2021-02-28 00:51:17.720+0000 INFO  [o.n.c.i.ExecutionEngine] [neo4j/e74f1fd3] Discarded stale query from the query cache after 45 seconds. Reason: NodesAllCardinality changed from 6127.0 to 86144.0, which is a divergence of 0.9288749071322436 which is greater than threshold 0.7432268547680043. Query: CALL db.labels()
+  YIELD label
+RETURN {name: "labels", data: COLLECT(label)[..1000]} AS result
+UNION ALL
+CALL db.relationshipTypes()
+  YIELD relationshipType
+RETURN {name: "relationshipTypes", data: COLLECT(relationshipType)[..1000]} AS result
+UNION ALL
+CALL db.propertyKeys()
+  YIELD propertyKey
+RETURN {name: "propertyKeys", data: COLLECT(propertyKey)[..1000]} AS result
+UNION ALL
+CALL dbms.functions()
+  YIELD name, signature, description
+RETURN {name: "functions", data: collect({name: name, signature: signature, description: description})} AS result
+UNION ALL
+CALL dbms.procedures()
+  YIELD name, signature, description
+RETURN {name: "procedures", data: collect({name: name, signature: signature, description: description})} AS result
+UNION ALL
+MATCH ()
+RETURN {name: "nodes", data: count(*)} AS result
+UNION ALL
+MATCH ()-->()
+RETURN {name: "relationships", data: count(*)} AS result
+2021-02-28 00:51:51.152+0000 INFO  [o.n.k.d.Database] [neo4j/e74f1fd3] Rotated to transaction log [/data/transactions/neo4j/neostore.transaction.db.7] version=6, last transaction in previous log=8639, rotation took 27 millis, started after 118435 millis.
+2021-02-28 00:51:57.723+0000 INFO  [o.n.c.i.ExecutionEngine] [neo4j/e74f1fd3] Discarded stale query from the query cache after 39 seconds. Reason: NodesAllCardinality changed from 86144.0 to 583144.0, which is a divergence of 0.8522766246415979 which is greater than threshold 0.7442442501493461. Query: CALL db.labels()
+  YIELD label
+RETURN {name: "labels", data: COLLECT(label)[..1000]} AS result
+UNION ALL
+CALL db.relationshipTypes()
+  YIELD relationshipType
+RETURN {name: "relationshipTypes", data: COLLECT(relationshipType)[..1000]} AS result
+UNION ALL
+CALL db.propertyKeys()
+  YIELD propertyKey
+RETURN {name: "propertyKeys", data: COLLECT(propertyKey)[..1000]} AS result
+UNION ALL
+CALL dbms.functions()
+  YIELD name, signature, description
+RETURN {name: "functions", data: collect({name: name, signature: signature, description: description})} AS result
+UNION ALL
+CALL dbms.procedures()
+  YIELD name, signature, description
+RETURN {name: "procedures", data: collect({name: name, signature: signature, description: description})} AS result
+UNION ALL
+MATCH ()
+RETURN {name: "nodes", data: count(*)} AS result
+UNION ALL
+MATCH ()-->()
+RETURN {name: "relationships", data: count(*)} AS result
+2021-02-28 00:52:24.004+0000 INFO  [o.n.c.i.ExecutionEngine] [neo4j/e74f1fd3] Discarded stale query from the query cache after 107 seconds. Reason: NodesAllCardinality changed from 6127.0 to 723772.0, which is a divergence of 0.9915346269267117 which is greater than threshold 0.7316718808010557. Query: MATCH (a)-[r]->(b)
+  WHERE id(a) IN $existingNodeIds AND id(b) IN $newNodeIds
+RETURN r AS r
+2021-02-28 00:58:45.226+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j/e74f1fd3] Checkpoint triggered by "Scheduled checkpoint for every 15 minutes threshold" @ txId: 9088 checkpoint started...
+2021-02-28 00:58:45.479+0000 INFO  [o.n.k.i.t.l.c.CheckPointerImpl] [neo4j/e74f1fd3] Checkpoint triggered by "Scheduled checkpoint for every 15 minutes threshold" @ txId: 9088 checkpoint completed in 252ms
+2021-02-28 00:58:45.485+0000 INFO  [o.n.k.i.t.l.p.LogPruningImpl] [neo4j/e74f1fd3] Pruned log versions 2 through 5. The strategy used was '104857600 size'. 

@@ -26,4 +26,24 @@ public class ObjetService {
 
         return ResultUtils.feedListFromResult(result);
     }
+
+    public List<Map<String, Object>> getNbObjetRestitue() {
+        Session session = sessionFactory.openSession();
+        Result result = session.query("MATCH(o:Objet)\n" +
+                "WHERE o.restitue <> 'false'\n" +
+                "RETURN count(o) as `Nombre d'objet restitué`\n"
+                , Map.of());
+
+        return ResultUtils.feedListFromResult(result);
+    }
+
+    public List<Map<String, Object>> getNbObjetNonRestitue() {
+        Session session = sessionFactory.openSession();
+        Result result = session.query("MATCH(o:Objet)\n" +
+                        "WHERE o.restitue = 'false'\n" +
+                        "RETURN count(o) as `Nombre d'objet non récupéré`\n"
+                , Map.of());
+
+        return ResultUtils.feedListFromResult(result);
+    }
 }
