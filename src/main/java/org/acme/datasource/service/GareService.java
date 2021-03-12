@@ -62,6 +62,8 @@ public class GareService {
                         "collect(apdg), collect(dg),collect(aprsncf), collect(rsncf), collect(nbObjet)\n"
                         +"ORDER BY nbObjet"
                 , Collections.EMPTY_MAP);
+
+
         return this.resultList(result);
     }
 }
