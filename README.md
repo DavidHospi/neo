@@ -14,12 +14,17 @@
 ### Importer les données:
 
 Aller à `http://localhost:7474/browser/` 
-Identifiant : `neo4j`
-Password : `david`
+- Identifiant : `neo4j`
+- Password : `david`
 
-Ou bien utilisez votre Neo4J Desktop (Recommandé)
+Ou bien utilisez votre Neo4J Desktop - Remote connection
+- Remote URL : neo4j://localhost:7687
+- Identifiant : `neo4j`
+- Password : `david`
 
 Faire tourner le script dans `/neo4j-quickstart/src/main/resources/import.cypher` (Le copier / coller)
+
+:warning: Attention, si vous utilisez Neo4j Desktop, il vous foudra séparer l'insertion de données en plusieurs parties. (Chaque partie utilisant :auto doivent être entrées séparement du reste, tout en concarvant l'ordre du script.) :warning:
 
 ### Stop Database:
 `make stop-database`
@@ -34,9 +39,13 @@ Faire tourner le script dans `/neo4j-quickstart/src/main/resources/import.cypher
 `make dev`
 
 ### Tester le projet
-Rendez-vous sur le swagger de l'application : http://localhost:8089/swagger-ui/
+- Rendez-vous sur le swagger de l'application : http://localhost:8089/swagger-ui/
 
-Installez l'addon NeoMap sur votre Neo4j Desktop, il vous permettra de visualiser les données possédant des information de géolocalisation :
+- Installez l'addon NeoMap sur votre Neo4j Desktop, il vous permettra de visualiser les données possédant des information de géolocalisation :
 
-![alt text](https://zupimages.net/viewer.php?id=21/21/6pdn.png)
-![alt-text](https://zupimages.net/viewer.php?id=21/21/ud7n.png)
+#### - Configuration
+<img src="https://zupimages.net/up/21/21/6pdn.png" alt="" width="375" height="450"/>
+
+#### - Rendu
+<img src="https://zupimages.net/up/21/21/ud7n.png" alt="" width="500" height="500"/>
+
