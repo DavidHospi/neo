@@ -23,7 +23,8 @@ Ou bien utilisez votre Neo4J Desktop - Remote connection
 - Password : `david`
 
 Faire tourner le script dans `/neo4j-quickstart/src/main/resources/import.cypher` (Le copier / coller)
-:warning: Attention, si vous utilisez Neo4j Desktop, il vous foudra séparer l'insertion de données en plusieurs parties. (Chaque partie utilisant :auto doivent être entrées séparement du reste, tout en concarvant l'ordre du script)
+
+:warning: Attention, si vous utilisez Neo4j Desktop, il vous foudra séparer l'insertion de données en plusieurs parties. (Chaque partie utilisant :auto doivent être entrées séparement du reste, tout en concarvant l'ordre du script.) :warning:
 
 ### Stop Database:
 `make stop-database`
