@@ -93,7 +93,8 @@ LOAD CSV WITH HEADERS FROM 'file:///objets-trouves-restitution.csv' AS objet FIE
 CREATE (o: Objet {
 natureObjet: objet.`Nature d'objets`,
 perduLe : objet.Date,
-restitue: (coalesce(objet.`Date et heure de restitution`, 'false'))
+restitue: (coalesce(objet.`Date et heure de restitution`, 'false')),
+codeUIC: objet.codeUIC
 })
 
 MERGE(gare: Gare{
@@ -105,3 +106,15 @@ MERGE(type: TypeObjet {
 nom: objet.`Type d'objets`
 })
 MERGE (o)-[:EST_DE_TYPE]->(type)
+
+:auto USING PERIODIC COMMIT 500
+LOAD CSV WITH HEADERS FROM 'file:///Departements.csv' AS objet FIELDTERMINATOR ';'
+
+CREATE (p: Population {
+    nombre: toLong(objet.`PTOT`)
+})
+
+MERGE (d:Departement {
+    code: objet.`CODDEP`
+})
+MERGE (d)-[:PEUPLE_PAR]->(p)
