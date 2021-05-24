@@ -38,5 +38,5 @@ Rendez-vous sur le swagger de l'application : http://localhost:8089/swagger-ui/
 
 Installez l'addon NeoMap sur votre Neo4j Desktop, il vous permettra de visualiser les données possédant des information de géolocalisation :
 
-![alt text](https://zupimages.net/viewer.php?id=21/21/6pdn.png)
-![alt-text](https://zupimages.net/viewer.php?id=21/21/ud7n.png)
+![Alt text](https://zupimages.net/viewer.php?id=21/21/6pdn.png)
+![Alt text](https://zupimages.net/viewer.php?id=21/21/ud7n.png)
